@@ -1,0 +1,142 @@
+.page-body{
+margin-top: 30px;
+}
+
+.page-section{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.weui-cells__title{
+    /* margin-top: 0.77em;
+    margin-bottom: 0.3em; */
+    padding-left: 15px;
+    /* padding-right: 15px; */
+    color: #999999;
+    font-size: 28rpx;
+    align-self: center;
+    justify-content: center;
+    flex: 1;
+}
+.weui-cells_after-title{
+  justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex: 3;
+}
+
+.weui-cell{
+  position: relative;
+  /* margin-bottom: 1.17647059em; */
+  background-color: #FFFFFF;
+  line-height: 1.41176471;
+  font-size: 28rpx;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  /* border-top: 1px solid #D9D9D9; */
+  border-bottom: 1px solid #D9D9D9;
+}
+.upload-btn{
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  font-size: 28rpx;
+}
+.code_img {
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.box_text {
+  background-color: white;
+  text-align: center;
+  padding: 100rpx 0;
+  margin-top: 30rpx;
+  color: rgba(0, 0, 0, 0.5);
+  flex: 2;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+}
+
+.code_box {
+  text-align: center;
+  background-color: white;
+  margin-top: 30rpx;
+  padding: 50rpx 0 17px 0;
+}
+
+.button {
+  width: 300rpx;
+  text-align: center;
+  margin: 0px 10px 0 10px;
+  height: 80rpx;
+  color: white;
+  border-radius: 15px;
+  line-height: 80rpx;
+  background-color: #07c160;
+}
+
+.button_clear {
+  width: 300rpx;
+  text-align: center;
+  margin: 20px auto 0 auto;
+  height: 80rpx;
+  color: #07c160;
+  border-radius: 30rpx;
+  line-height: 80rpx;
+  background-color: rgba(0, 0, 0, 0.03);
+  margin: 0 20rpx;
+}
+
+.btn-area{
+  margin-top: 10rpx;
+  position: absolute;
+  width: 100%;
+  bottom: 10rpx;
+}
+.btn-base{
+  margin-top: 20rpx;
+  background-color: #409eff !important;
+  width: 50% !important;
+  margin: auto !important;
+  margin-bottom: 10rpx !important;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  margin: 50rpx 0; 
+  margin-top: 10rpx;
+}
+
+.btn-reset{
+  background-color: #fff !important;
+}
+
+.img_info {
+  padding-top: 16px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  padding: 16rpx 0;
+  border-top: 0.5px solid #E5E5E5;
+  margin-top: 50rpx;
+}
+
+.img_info_title {
+  font-size: 14;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #888888;
+  width: 72px;
+  margin-right: 32px;
+}
+
+.img_info_detail {
+  text-align: left;
+  font-size: 14;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  width: 500rpx;
+}
+
