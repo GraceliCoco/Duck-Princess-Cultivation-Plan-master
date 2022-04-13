@@ -1,5 +1,11 @@
+page{
+  height: 100%;
+  background-color: #ffffff;
+}
 .page-body{
-margin-top: 30px;
+  margin-top: 30rpx;
+  background-color: #fff;
+  height: 100%;
 }
 
 .page-section{
