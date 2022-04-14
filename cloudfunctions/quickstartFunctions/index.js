@@ -13,6 +13,8 @@ const addMission = require('./addMission/index');
 const editMission = require('./editMission/index');
 const editReward = require('./editReward/index');
 const deleteMission = require('./deleteMission/index');
+const selectUserSignRecord = require('./selectUserSignRecord/index');
+const addSignRecord = require('./addSignRecord/index');
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -47,5 +49,9 @@ exports.main = async (event, context) => {
       return await editMission.main(event, context);
     case 'editReward':
       return await editReward.main(event, context);
+    case 'selectUserSignRecord': 
+      return await selectUserSignRecord.main(event, context);
+    case 'addSignRecord':
+      return await addSignRecord.main(event, context);
   }
 };

@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <image class="bg-image" mode="widthFix" src="./IMG_1255.png"></image>
+  <!-- ./IMG_1255.png -->
+  <image class="bg-image" mode="widthFix" src="{{bgImgUrl || './IMG_1255.png'}}"></image>
   <view class="integral" wx:if="{{userName}}">{{userName}}的🐔分:{{userIntegral || 0}}</view>
   <view class="power" wx:key="title" wx:for="{{powerList}}" wx:for-item="power">
     <view wx:if="{{power.showItem}}">
@@ -12,7 +13,15 @@
       </view>
     </view>
   </view>
-
+    <view class="btn-area">
+      <button class="btn btn-base" bindtap="showCanlendar">点击签到</button>
+    </view>
+    <view>
+      <ldcalendar id="calendar" tipTitle="点击签到" calendarShow="{{calendarShow}}" defaultStartDate="{{currentDate}}" defaultSelectDate="{{currentDate}}" specialDays="{{specialDays}}"
+      bind:selectDateEvent="onSelectDate"
+      />
+    </view>
+    
   <cloud-tip-modal showUploadTipProps="{{showUploadTip}}"></cloud-tip-modal>
 
 </view>

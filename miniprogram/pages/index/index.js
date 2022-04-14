@@ -45,15 +45,22 @@ Page({
     operatorType: {
       COMPLETE_MISSION: 'complete mission',
       EXCHANGE_REWARDS: 'exchange rewards'
-    }
+    },
+    calendarShow: false,
+    currentDate: new Date("yyyy-MM-dd"),
+    specialDays: [['2021-05-02','周年纪念日'],['2022-04-20','我的生日'],['2022-05-05','宝贝生日']],
+    bgImgUrl: 'cloud://note-8gd2t5dbbdb0973e.6e6f-note-8gd2t5dbbdb0973e-1305725455/IMG_1255.png',
+
+    is_user_sign: false,
   },
 
   onLoad(){
-    this.resetMission()
+    this.resetMission();
   },
 
   onShow(){
-    this.selectUser()
+    this.selectUser();
+    this.selectUserSignRecord();
   },
 
   onClickPowerInfo(e) {
@@ -151,6 +158,49 @@ Page({
   });
  },
 
+ selectUserSignRecord(){
+   console.log('执行selectUserSignRecord')
+    wx.cloud.callFunction({
+      name: 'quickstartFunctions',
+      config: {
+        env: this.data.envId
+      },
+      data: {
+        type: 'selectUserSignRecord',
+        data: {
+          currentDate: (new Date()).getTime(),
+        }
+      }
+    }).then((resp) => {
+      console.log(resp, '查完状态')
+      this.setData({
+        is_user_sign: resp.result.data[0].is_sign,
+      })
+    }).catch((e) => {
+  });
+ },
+
+ userSign(datas){
+  wx.cloud.callFunction({
+    name: 'quickstartFunctions',
+    config: {
+      env: this.data.envId
+    },
+    data: {
+      type: 'addSignRecord',
+      data: {
+        currentDate: datas.currentDate,
+      }
+    }
+  }).then((resp) => {
+    console.log(resp, '签到状态')
+    this.setData({
+      is_user_sign: true,
+    })
+  }).catch((e) => {
+});
+ },
+
   resetMission() {
     wx.cloud.callFunction({
         name: 'quickstartFunctions',
@@ -191,4 +241,24 @@ Page({
     }).catch((e) => {
     });
   },
+  showCanlendar(e){
+    console.log(e, 'click the btn')
+    this.setData({
+      calendarShow: true
+    });
+    let component = this.selectComponent("#calendar");
+    component.showCalendar();
+    console.log(this.data.calendarShow)
+  },
+  // 日历被选中
+  onSelectDate(e){
+    console.log(e.detail)//输出所选择日期
+    let component = this.selectComponent("#calendar");
+    component.showCalendar();
+    if(e.detail.date==="今天"){
+      this.userSign({
+        currentDate: (new Date()).getTime()
+      })
+    }
+  }
 });

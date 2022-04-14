@@ -1,4 +1,10 @@
 {
+  "plugins": {
+    "myPlugin": {
+      "version": "1.0.7", 
+      "provider":"wx01fab41838bbfd69"
+    }
+  },
   "pages": [
     "pages/index/index",
     "pages/selectRecord/index",
@@ -28,4 +34,5 @@
     "mp-toptips": "miniprogram_npm/weui-miniprogram/toptips/toptips"
   },
   "style": "v2"
+  
 }
