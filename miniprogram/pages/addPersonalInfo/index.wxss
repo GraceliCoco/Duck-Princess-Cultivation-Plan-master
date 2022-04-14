@@ -2,9 +2,9 @@ page {
     background-color: #f9f9f9;
 }
   
-  .addr_manage {
+  /* .addr_manage {
     
-  }
+  } */
     .addr_ma_item {
       display: flex;
       border-bottom: 1px solid #ececec;
@@ -63,9 +63,9 @@ page {
     }
   
   /*=========================weui==========================*/
-  .we_form_wrap {
+  /* .we_form_wrap {
     
-  }
+  } */
   .form_item {
       display: flex;
       color: #666666;

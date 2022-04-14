@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "奖励列表",
+  "usingComponents": {
+    "cloud-tip-modal": "/components/cloudTipModal/index",
+    "base-list-page": "/components/baseListPage/index"
+  }
+}

@@ -30,6 +30,10 @@ Page({
       // {
       //   title: '信息设置',
       //   page: 'addPersonalInfo'
+      // },
+      // {
+      //   title: '新版奖励管理',
+      //   page: 'updateRewardsNew'
       // }
     ]
     }],
