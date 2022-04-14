@@ -1,0 +1,43 @@
+<view class="code_box">
+    <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" delay="1500">
+    </mp-toptips>
+    <mp-form id="form" rules="{{rules}}" models="{{form}}" >
+        <mp-cells class="center content-wrap">
+        <mp-cell class="form_item" prop="userName" title="姓名">
+            <input bindinput="formInputChange" value="{{form.userName}}" data-field="userName" class="weui-input" placeholder="请填写收货人姓名"/>
+        </mp-cell>
+        <mp-cell class="form_item" prop="telNumber" title="电话">
+            <input bindinput="formInputChange" value="{{form.telNumber}}" data-field="telNumber" class="weui-input" placeholder="请填写收货电话"/>
+        </mp-cell>
+        <mp-cell class="form_item_region" title="省市区">
+            <view class="addr_ma_item province_select">
+            <view class="picker_wrap">
+                <picker
+                mode="region"
+                bindchange="bindRegionChange"
+                value="{{form.region}}"
+                name="region"
+                custom-item="{{customItem}}">
+                <view class="{{form.region[1]?'':'default_picker'}}">
+                    {{form.region[0]}}
+                    {{form.region[1]?'-':''}}
+                    {{form.region[1]}}
+                    {{form.region[1]?'-':''}}
+                    {{form.region[2]}}
+                </view>
+                </picker>
+            </view>
+            <view class="addr_ma_icon">></view>
+            </view>
+        </mp-cell>
+        <mp-cell class="form_item" prop="addrDetail" title="详细信息">
+            <input bindinput="formInputChange" value="{{form.addrDetail}}" data-field="addrDetail" class="weui-input" placeholder="街道、楼牌号等"/>
+        </mp-cell>
+        </mp-cells>
+    <!--提交按钮-->
+        <view class="submit_btn_wrap footer btn-area">
+        <button class="weui-btn btn-base" type="primary" bindtap="weSubmitForm">确定</button>
+        <button  class="btn-base btn-reset" type="warn" bindtap="restForm" plain>取消</button>
+        </view>
+    </mp-form>
+</view>

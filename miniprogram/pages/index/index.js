@@ -26,7 +26,11 @@ Page({
       {
         title: '奖励管理',
         page: 'updateRewards'
-      }
+      },
+      // {
+      //   title: '信息设置',
+      //   page: 'addPersonalInfo'
+      // }
     ]
     }],
     envList,

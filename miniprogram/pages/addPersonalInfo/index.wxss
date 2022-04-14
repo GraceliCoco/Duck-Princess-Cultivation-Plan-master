@@ -1,0 +1,92 @@
+page {
+    background-color: #f9f9f9;
+}
+  
+  .addr_manage {
+    
+  }
+    .addr_ma_item {
+      display: flex;
+      border-bottom: 1px solid #ececec;
+      padding: 20rpx;
+      align-items: center;
+      color: #666666;
+  
+      
+    }
+    .addr_ma_txt {
+        display: 2;
+    }
+  
+    .addr_ma_input {
+    flex: 4;
+    margin-left: 30rpx;
+    padding-right: 20rpx;
+    }
+  .province_select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+  }
+  .addr_ma_icon {
+      font-size: 30rpx;
+      color: #acacac;
+    }
+  .picker_wrap {
+      display: flex;
+      flex: 5;
+  
+      
+    }
+    .addr_ma_txt {
+        margin-right: 20rpx;
+    }
+  
+    picker {
+    width: 70%;
+    }
+  
+    .default_picker {
+    color: #acacac;
+    }
+  .submit_btn_wrap {
+    margin-top: 20rpx;
+    padding: 0 20rpx;
+    width: 100%;
+  
+   
+  } 
+  button {
+      font-weight: normal;
+      width: 100% !important;
+      margin-top: 20rpx;
+    }
+  
+  /*=========================weui==========================*/
+  .we_form_wrap {
+    
+  }
+  .form_item {
+      display: flex;
+      color: #666666;
+      font-size: 28rpx;
+    }
+  
+    .form_item_region {
+      color: #666666;
+      font-size: 28rpx;
+    }
+  
+    .cell--weui-cell {
+      width: 100%;
+    }
+  
+    .weui-label {
+      width: 136rpx;
+    }
+
+    .content-wrap{
+        text-align: left;
+    }
+  
+  
