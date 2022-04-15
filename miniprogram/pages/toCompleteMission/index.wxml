@@ -25,7 +25,7 @@
         </view>
         <view 
           id="{{item._id}}" 
-          class="button btn-reset {{!item.is_finished && 'button_disabled'}} {{item.is_finished ? 'btn-display' : 'btn-disappear'}}" 
+          class="button btn-reset  {{item.is_finished ? 'btn-display' : 'btn-disappear'}}" 
           bindtap="{{!item.is_finished ? '()=>{}' : 'showResetMissionModal'}}"
         >
           {{'重启'}}

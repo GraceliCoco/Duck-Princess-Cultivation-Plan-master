@@ -139,7 +139,7 @@ page{
 
 .button_disabled {
   /* color: #555555; */
-  background-color: #c7cac8;
+  background-color: #c7cac8 !important;
 }
 
 .button_clear {
@@ -168,5 +168,5 @@ page{
 }
 
 .btn-reset{
-  background-color: #409eff;
+  background-color: #409eff !important;
 }

@@ -96,7 +96,7 @@ Page({
             data: {
               type: 'selectGoods',
               event: {
-                id: item.goods_id
+                id: item.mission_id
               }
             }
           }).then(resp => {

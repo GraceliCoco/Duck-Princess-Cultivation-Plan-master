@@ -153,6 +153,7 @@ Page({
         type: 'selectMission'
       }
     }).then((resp) => {
+      console.log(resp, '获取积分')
       this.setData({
         haveGetRecord: true,
         record: resp.result.data

@@ -39,13 +39,13 @@ Page({
     const data = this.data.record.find(item => {
       return item._id === goodsId
     })
-    const exchangeRewards = this.exchangeRewards;
+    const excRewards = this.exchangeRewards;
     wx.showModal({
       title: '请确认',
       content: '兑换 '+data.goods_content,
       success (res) {
         if (res.confirm) {
-          exchangeRewards(data)
+          excRewards(data)
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
