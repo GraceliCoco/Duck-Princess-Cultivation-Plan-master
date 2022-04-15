@@ -1,38 +1,46 @@
 {
-  "plugins": {
-    "myPlugin": {
-      "version": "1.0.7", 
-      "provider":"wx01fab41838bbfd69"
-    }
-  },
-  "pages": [
-    "pages/index/index",
-    "pages/selectRecord/index",
-    "pages/toCompleteMission/index",
-    "pages/toExchangeRewards/index",
-    "pages/updateRewards/index",
-    "pages/addRewards/index",
-    "pages/updateMission/index",
-    "pages/addMission/index",
-    "pages/addPersonalInfo/index",
-    "pages/updateRewardsNew/index"
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "细老师养成计划",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "mp-dialog": "miniprogram_npm/weui-miniprogram/dialog/dialog",
-    "mp-checkbox": "miniprogram_npm/weui-miniprogram/checkbox/checkbox",
-    "mp-form": "miniprogram_npm/weui-miniprogram/form/form",
-    "mp-cells": "miniprogram_npm/weui-miniprogram/cells/cells",
-    "mp-cell": "miniprogram_npm/weui-miniprogram/cell/cell",
-    "mp-toptips": "miniprogram_npm/weui-miniprogram/toptips/toptips"
-  },
-  "style": "v2"
-  
+    "plugins": {
+        "myPlugin": {
+            "version": "1.0.7",
+            "provider": "wx01fab41838bbfd69"
+        },
+        "calendar": {
+            "version": "1.0.8",
+            "provider": "wxa3eebcbd5f0cd759"
+        },
+        "signCalendar": {
+            "version": "1.0.0",
+            "provider": "wxc9d90f7546cba92a"
+        }
+    },
+    "pages": [
+        "pages/index/index",
+        "pages/selectRecord/index",
+        "pages/toCompleteMission/index",
+        "pages/toExchangeRewards/index",
+        "pages/updateRewards/index",
+        "pages/addRewards/index",
+        "pages/updateMission/index",
+        "pages/addMission/index",
+        "pages/addPersonalInfo/index",
+        "pages/updateRewardsNew/index",
+        "pages/daySign/index"
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "细老师养成计划",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "mp-dialog": "miniprogram_npm/weui-miniprogram/dialog/dialog",
+        "mp-checkbox": "miniprogram_npm/weui-miniprogram/checkbox/checkbox",
+        "mp-form": "miniprogram_npm/weui-miniprogram/form/form",
+        "mp-cells": "miniprogram_npm/weui-miniprogram/cells/cells",
+        "mp-cell": "miniprogram_npm/weui-miniprogram/cell/cell",
+        "mp-toptips": "miniprogram_npm/weui-miniprogram/toptips/toptips"
+    },
+    "style": "v2"
 }

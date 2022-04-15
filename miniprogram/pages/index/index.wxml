@@ -17,9 +17,11 @@
       <button class="btn btn-base" bindtap="showCanlendar">点击签到</button>
     </view>
     <view>
+    <!-- calendarShow -->
       <ldcalendar id="calendar" tipTitle="点击签到" calendarShow="{{calendarShow}}" defaultStartDate="{{currentDate}}" defaultSelectDate="{{currentDate}}" specialDays="{{specialDays}}"
       bind:selectDateEvent="onSelectDate"
       />
+      <!-- <calendar header="点击签到" start-date="{{currentDate}}"/> -->
     </view>
     
   <cloud-tip-modal showUploadTipProps="{{showUploadTip}}"></cloud-tip-modal>

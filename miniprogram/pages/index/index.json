@@ -2,6 +2,7 @@
   "usingComponents": {
     "cloud-tip-modal": "/components/cloudTipModal/index",
     "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell",
-    "ldcalendar": "plugin://myPlugin/ldcalendar"
+    "ldcalendar": "plugin://myPlugin/ldcalendar",
+    "calendar": "plugin://calendar/calendar"
   }
 }
