@@ -1,7 +1,7 @@
 // index.js
 // const app = getApp()
 const { envList } = require('../../envList.js');
-
+const util = require('../../utils/util.js');
 Page({
   data: {
     showUploadTip: false,
@@ -27,6 +27,10 @@ Page({
         title: '奖励管理',
         page: 'updateRewards'
       },
+      {
+        title: '每日签到',
+        page: 'daySign'
+      },
       // {
       //   title: '信息设置',
       //   page: 'addPersonalInfo'
@@ -47,7 +51,7 @@ Page({
       EXCHANGE_REWARDS: 'exchange rewards'
     },
     calendarShow: false,
-    currentDate: new Date("yyyy-MM-dd"),
+    currentDate: util.getFormatDate(new Date()),
     specialDays: [['2021-05-02','周年纪念日'],['2022-04-20','我的生日'],['2022-05-05','宝贝生日']],
     bgImgUrl: 'cloud://note-8gd2t5dbbdb0973e.6e6f-note-8gd2t5dbbdb0973e-1305725455/IMG_1255.png',
 
@@ -61,6 +65,7 @@ Page({
   onShow(){
     this.selectUser();
     this.selectUserSignRecord();
+    console.log(util.getFormatDate(new Date()))
   },
 
   onClickPowerInfo(e) {
@@ -168,11 +173,11 @@ Page({
       data: {
         type: 'selectUserSignRecord',
         data: {
-          currentDate: (new Date()).getTime(),
+          currentDate: util.getFormatDate(new Date()),
         }
       }
     }).then((resp) => {
-      console.log(resp, '查完状态')
+      console.log(resp, '查完状态', new Date("yyyy-MM-dd"), util.getFormatDate(new Date()))
       this.setData({
         is_user_sign: resp.result.data[0].is_sign,
       })
@@ -189,13 +194,16 @@ Page({
     data: {
       type: 'addSignRecord',
       data: {
-        currentDate: datas.currentDate,
+        currentDate: util.getFormatDate(new Date()),
       }
     }
   }).then((resp) => {
     console.log(resp, '签到状态')
     this.setData({
       is_user_sign: true,
+    });
+    wx.showToast({
+      title: '签到成功',
     })
   }).catch((e) => {
 });
@@ -255,10 +263,17 @@ Page({
     console.log(e.detail)//输出所选择日期
     let component = this.selectComponent("#calendar");
     component.showCalendar();
-    if(e.detail.date==="今天"){
-      this.userSign({
-        currentDate: (new Date()).getTime()
-      })
+    if( e.detail.date=== "今天" ){
+      if (!this.data.is_user_sign) {
+        this.userSign({
+          currentDate: (new Date()).getTime()
+        })
+      } else {
+        wx.showToast({
+          title: '您今日已签到',
+        })
+      }
+      
     }
   }
 });

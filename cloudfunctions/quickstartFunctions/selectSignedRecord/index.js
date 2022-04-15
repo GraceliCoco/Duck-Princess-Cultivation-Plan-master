@@ -11,9 +11,5 @@ exports.main = async (event, context) => {
   const data = event.data;
   console.log('zhixing 1111111111')
   console.log(event, 111111111111)
-  console.log(data, 'data12345');
-  let sign_date1 = data.currentDate;
-  return await db.collection('sign_record').where({
-    sign_date: sign_date1
-  }).get();
+  return await db.collection('sign_record').get();
 };

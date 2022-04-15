@@ -1,0 +1,15 @@
+<!--pages/daySign/index.wxml-->
+<view class="container">
+    <!-- 微打卡组件 -->
+    <!-- <dk-calendar originActiveData="{{user_date_log}}" bind:selectDate="onSelectDate" size="m"></dk-calendar> -->
+
+    <!-- 默认打卡组件 -->
+    <!-- <dk-calendar originActiveData="{{user_date_log}}" bind:selectDate="onSelectDate"></dk-calendar> -->
+
+    <calendar 
+    selected="{{selected}}" 
+    bindselect="bindselect" 
+    bindgetdate="bindgetdate"
+    isOpen="{{isOpen}}" />
+
+</view>
