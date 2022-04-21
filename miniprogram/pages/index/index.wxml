@@ -13,14 +13,14 @@
       </view>
     </view>
   </view>
-    <view class="btn-area">
+    <!-- <view class="btn-area">
       <button class="btn btn-base" bindtap="showCanlendar">点击签到</button>
-    </view>
+    </view> -->
     <view>
     <!-- calendarShow -->
-      <ldcalendar id="calendar" tipTitle="点击签到" calendarShow="{{calendarShow}}" defaultStartDate="{{currentDate}}" defaultSelectDate="{{currentDate}}" specialDays="{{specialDays}}"
+      <!-- <ldcalendar id="calendar" tipTitle="点击签到" calendarShow="{{calendarShow}}" defaultStartDate="{{currentDate}}" defaultSelectDate="{{currentDate}}" specialDays="{{specialDays}}"
       bind:selectDateEvent="onSelectDate"
-      />
+      /> -->
       <!-- <calendar header="点击签到" start-date="{{currentDate}}"/> -->
     </view>
     

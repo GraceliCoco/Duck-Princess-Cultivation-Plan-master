@@ -55,7 +55,7 @@
       </block>
     </view>
     <view class="btn-area packup">
-      <button class="btn-ok" bindtap='packup'>立即签到</button>
+      <button class="btn-ok {{isSignCanClick ? '' : 'btn-disabled'}}" bindtap='packup' disabled="{{!isSignCanClick}}" >{{isSignCanClick? "立即签到" : "今日已签到"}}</button>
     </view>
   </view>
 </view>

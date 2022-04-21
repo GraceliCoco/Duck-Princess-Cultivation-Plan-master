@@ -27,9 +27,14 @@ Component({
       type: Boolean,
       value: false,
     }, 
+    // 是否需要展示顶部的年月日
     calShow: {
       type: Boolean,
       value: true,
+    },
+    isSignCanClick: {
+      type: Boolean,
+      value: true
     }
   },
 
