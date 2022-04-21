@@ -1,1 +1,33 @@
 /* pages/daySign/index.wxss */
+.header-style{
+    background: #5ac6f8 ;  
+    color: #fff;
+  }
+
+  .active-coloro {
+    color: #fff;
+    background: #eb9ad0;
+  }
+
+  .container-wrap{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .active-colort {
+    color: #fff;
+    background: #b8d5eb;
+  }
+
+  /* 出勤  */
+    .dotcolor-o{
+        background-color: #188be4 !important;  
+    }
+/* 未出勤  */
+    .dotcolor-t{
+        background-color: #FF7F50 !important;  
+    }
+
+    .btn-sign {
+        color: #fff;
+    }

@@ -1,15 +1,39 @@
 <!--pages/daySign/index.wxml-->
-<view class="container">
+<view class="container-wrap">
     <!-- 微打卡组件 -->
     <!-- <dk-calendar originActiveData="{{user_date_log}}" bind:selectDate="onSelectDate" size="m"></dk-calendar> -->
 
     <!-- 默认打卡组件 -->
     <!-- <dk-calendar originActiveData="{{user_date_log}}" bind:selectDate="onSelectDate"></dk-calendar> -->
 
-    <calendar 
+    <!-- <calendar 
     selected="{{selected}}" 
     bindselect="bindselect" 
     bindgetdate="bindgetdate"
-    isOpen="{{isOpen}}" />
+    isOpen="{{isOpen}}" 
+    isSignCanClick="{{isSignCanClick}}" /> -->
 
+    <calendar-new 
+    cur-year="{{curYear}}"
+    cur-month="{{curMonth}}" 
+    day="{{day}}" 
+    header_show='{{header_show}}' 
+    prev='{{prev}}' 
+    next='{{next}}'
+    header-style='header-style' 
+    active-coloro='active-coloro'
+    active-colort='active-colort'
+    bindselectDate='selectDate'  
+    bindnextMonth='nextMonth' 
+    bindprevMonth='prevMonth' 
+    bindchooseDate='chooseDate'
+    active_type="circle"
+    isClick="{{isClick}}"
+    circle_show="{{true}}"
+    mystatus='{{mystatus}}'
+    pitch_on="circle"
+    speciallist="{{speciallist}}"
+    ></calendar-new>
+
+    <button class="btn-base btn-sign {{isSignCanClick ? '' : 'btn-disabled'}}" disabled="{{!isSignCanClick}}"  bindtap="clickToSign"> {{isSignCanClick? "立即签到" : "今日已签到"}}</button>
 </view>

@@ -225,6 +225,6 @@
   justify-content: center;
 }
 
-.date-disabled{
-  
+btn-disabled{
+  background-color: grey !important;
 }

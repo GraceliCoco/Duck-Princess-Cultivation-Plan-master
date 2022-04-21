@@ -11,6 +11,10 @@
         "signCalendar": {
             "version": "1.0.0",
             "provider": "wxc9d90f7546cba92a"
+        },
+        "calendar-new": {
+            "version": "1.3.3",
+            "provider": "wx23a9cef3522e4f7c"
         }
     },
     "pages": [
