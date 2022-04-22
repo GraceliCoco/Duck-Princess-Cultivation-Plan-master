@@ -47,12 +47,12 @@ Page({
       this.selectUserSignRecord();
       this.setData({
         speciallist: [
-          { date: '2022-05-02', background: 'yellow',text:'文字1',color:'', textBgcolor: '#e19' },
-          { date: '2022-04-20', background: 'red', text:'生日'  },
+          // { date: '2022-05-02', background: 'yellow',text:'文字1',color:'', textBgcolor: '#e19' },
+          // { date: '2022-04-20', background: 'red', text:'生日'  },
         ]
       });
       this.getMissionRecord();
-      console.log(regeneratorRuntime)
+      console.log(regeneratorRuntime, this.data.day, '212222222222')
     },
 
     nextMonth: function (e) {

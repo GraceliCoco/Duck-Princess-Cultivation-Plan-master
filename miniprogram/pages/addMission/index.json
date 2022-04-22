@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "新增任务",
   "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index"
+    "cloud-tip-modal": "/components/cloudTipModal/index",
+    "new-radio-group": "../../components/new-radio-group/index"
   }
 }

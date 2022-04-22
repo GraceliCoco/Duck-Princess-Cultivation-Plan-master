@@ -10,25 +10,25 @@ Page({
       tip: '安全稳定的文档型数据库',
       showItem: true,
       item: [{
-        title: '完成任务',
+        title: '🍧 完成任务',
         page: 'toCompleteMission'
       }, {
-        title: '兑换奖励',
+        title: '🍰 兑换奖励',
         page: 'toExchangeRewards'
       }, {
-        title: '查询记录',
+        title: '🍮 查询记录',
         page: 'selectRecord'
       },
       {
-        title: '任务管理',
+        title: '🧁 任务管理',
         page: 'updateMission'
       },
       {
-        title: '奖励管理',
+        title: '🍩 奖励管理',
         page: 'updateRewards'
       },
       {
-        title: '每日签到',
+        title: '🎂 每日签到',
         page: 'daySign'
       },
       // {
@@ -50,12 +50,16 @@ Page({
       COMPLETE_MISSION: 'complete mission',
       EXCHANGE_REWARDS: 'exchange rewards'
     },
+    
     calendarShow: false,
     currentDate: util.getFormatDate(new Date()),
     specialDays: [['2021-05-02','周年纪念日'],['2022-04-20','我的生日'],['2022-05-05','宝贝生日']],
     bgImgUrl: 'cloud://note-8gd2t5dbbdb0973e.6e6f-note-8gd2t5dbbdb0973e-1305725455/IMG_1255.png',
 
     is_user_sign: false,
+
+    haveGetRecord: false,
+    missionRecord: [],
   },
 
   onLoad(){
@@ -64,8 +68,117 @@ Page({
 
   onShow(){
     this.selectUser();
+
+    
     this.selectUserSignRecord();
-    console.log(util.getFormatDate(new Date()))
+    console.log(util.getFormatDate(new Date()));
+    this.isNeedAddSignMission();
+  },
+
+  async isNeedAddSignMission(){
+    console.log(this.haveGetRecord)
+    if(!this.data.haveGetRecord) {
+      // let record = await this.getMissionRecord();
+      // let that = this;
+      let promise = this.getMissionRecord();
+      promise.then(e=>{
+        // 查询出所有的mission记录
+        console.log(e, 'promise成功返回');
+        console.log(this.data.missionRecord, 'missionRecord')
+
+        if(!this.data.missionRecord.length) {
+          // 如果还没有记录，先创建一个sign的mission;
+          console.log(111111111)
+          this.addSignMission();
+        } else {
+          // 有mission记录但是找不到sign记录的，也创建一个sign记录
+          const data = this.data.missionRecord.find(item => {
+            return item.mission_content === '每日签到'; 
+          });
+          if(!data){
+            console.log('Not found mission sign')
+            this.addSignMission();
+          }
+        }
+      },(error) => {
+        console.log(error, '失败了')
+      })
+      console.log(promise, 'record11111');
+      
+    }
+    // let res = await wx.cloud.database().collection('mission').get();
+    
+  },
+
+  addSignMission(){
+    let data = {
+      mission_content: '每日签到',
+      mission_integral: 5,
+      mission_image: '',
+      mission_id: '',
+      is_finished: false,
+      is_online: true,
+      is_need_reset: true,
+      is_display: true,
+    }
+    wx.cloud.callFunction({
+      name: 'quickstartFunctions',
+      config: {
+        env: this.data.envId
+      },
+      data: {
+        type: 'addMission',
+        data: {
+          mission_content: data.mission_content,
+          mission_integral: data.mission_integral,
+          mission_image: data.mission_image,
+          mission_id: data.mission_id,
+          is_finished: data.is_finished,
+          is_online: data.is_online,
+          is_need_reset: data.is_need_reset,
+          is_display: data.is_display
+        }
+      }
+    }).then(resp => {
+      console.log(resp,'新增签到任务');
+    })
+  },
+
+  async getMissionRecord() {
+    let that = this;
+    let promise = new Promise(function(success, fail) {
+      wx.showLoading({
+        title: '',
+      });
+      wx.cloud.callFunction({
+        name: 'quickstartFunctions',
+        config: {
+          env: that.data.envId
+        },
+        data: {
+          type: 'selectMission'
+        }
+      }).then((resp) => {
+        success(resp);
+        console.log(resp, '获取所有mission');
+        that.setData({
+          haveGetRecord: true,
+          missionRecord: resp.result.data
+        });
+        wx.hideLoading();
+        return resp.result.data;
+      }).catch((e) => {
+        fail(e);
+        console.log(e);
+        that.setData({
+          // showUploadTip: true
+        });
+       wx.hideLoading();
+       return [];
+      });
+    });
+    return promise;
+    
   },
 
   onClickPowerInfo(e) {
@@ -177,7 +290,7 @@ Page({
         }
       }
     }).then((resp) => {
-      console.log(resp, '查完状态', new Date("yyyy-MM-dd"), util.getFormatDate(new Date()))
+      console.log(resp, '查完状态', util.getFormatDate(new Date()))
       this.setData({
         is_user_sign: resp.result.data[0].is_sign,
       })

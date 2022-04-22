@@ -18,7 +18,7 @@
         <view class="code_box_record_detail code_box_record_detail_time">
           <!--  bindtap="editMissionModal" -->
           <view id="{{item._id}}" class="button button_update" data-type='edit' bindtap="toAddMission">修改</view>
-          <view id="{{item._id}}" class="button" bindtap="showMissionModal">删除</view>
+          <view wx:if="{{item.is_display}}" id="{{item._id}}" class="button" bindtap="showMissionModal">删除</view>
         </view>
       </view>
     </view>

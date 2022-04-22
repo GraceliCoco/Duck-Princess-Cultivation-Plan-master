@@ -2,6 +2,7 @@
 .header-style{
     background: #5ac6f8 ;  
     color: #fff;
+    border-radius: 10rpx;
   }
 
   .active-coloro {
