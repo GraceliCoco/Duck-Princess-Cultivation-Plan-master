@@ -47,7 +47,7 @@ Page({
         if (res.confirm) {
           excRewards(data)
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
         }
       }
     })
@@ -133,7 +133,6 @@ Page({
       });
       wx.hideLoading();
    }).catch((e) => {
-      console.log(e);
       this.setData({
         showUploadTip: true
       });

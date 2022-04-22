@@ -18,14 +18,15 @@
       <view class="code_box_record_detail code_box_record_detail_time">
         <view 
           id="{{item._id}}" 
-          class="button {{item.is_finished && 'button_disabled'}} {{!item.is_finished ? 'btn-display' : 'btn-disappear'}}" 
+          class="button {{item.is_finished && 'button_disabled'}} {{ item.is_need_reset ?(!item.is_finished ? 'btn-display' : 'btn-disappear') : 'btn-display'}}" 
           bindtap="{{item.is_finished ? '()=>{}' : 'showMissionModal'}}"
         >
           {{item.is_finished ? '已完成' : '完成'}}
         </view>
         <view 
+          wx:if="{{item.is_need_reset}}"
           id="{{item._id}}" 
-          class="button btn-reset  {{item.is_finished ? 'btn-display' : 'btn-disappear'}}" 
+          class="button btn-reset  {{ item.is_need_reset ? ( item.is_finished ? 'btn-display' : 'btn-disappear') : 'btn-disappear'}}" 
           bindtap="{{!item.is_finished ? '()=>{}' : 'showResetMissionModal'}}"
         >
           {{'重启'}}

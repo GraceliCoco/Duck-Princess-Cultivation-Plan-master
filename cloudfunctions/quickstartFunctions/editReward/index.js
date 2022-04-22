@@ -8,7 +8,6 @@ const db = cloud.database();
 // 查询数据库集合云函数入口函数
 exports.main = async (event, context) => {
   const data = event.data;
-  console.log(data, 'data in goods11111111111111111')
   return await db.collection('goods').where({
     _id: event.data.reward_id
   }).update({

@@ -52,11 +52,9 @@ Page({
         ]
       });
       this.getMissionRecord();
-      console.log(regeneratorRuntime, this.data.day, '212222222222')
     },
 
     nextMonth: function (e) {
-      console.log(e)
       const currentYear = e.detail.currentYear;
       const currentMonth = e.detail.currentMonth;
       wx.showModal({
@@ -66,12 +64,11 @@ Page({
     },
 
     clickToSign(e){
-      console.log(e, '点击今日签到')
       this.userSign();
     },
 
     selectDate(e){
-      console.log(e, 'click select date')
+      // console.log(e, 'click select date')
     },
     nextMonth(e){
 
@@ -80,11 +77,10 @@ Page({
 
     },
     chooseDate(e){
-      console.log(e,点击了日期)
+      // console.log(e,点击了日期)
     },
 
     selectUserSignRecord(){
-      console.log('执行selectUserSignRecord')
        wx.cloud.callFunction({
          name: 'quickstartFunctions',
          config: {
@@ -97,7 +93,7 @@ Page({
            }
          }
        }).then((resp) => {
-         console.log(resp, '查完状态', new Date("yyyy-MM-dd"), util.getFormatDate(new Date()))
+        //  console.log(resp, '查完状态', new Date("yyyy-MM-dd"), util.getFormatDate(new Date()))
          this.setData({
           isSignCanClick: !resp.result.data[0].is_sign,
          })
@@ -118,7 +114,6 @@ Page({
           }
         }
       }).then((resp) => {
-        console.log(resp, '签到状态')
         this.updateUserIntegeral(this.data.signMissionData);
         this.setData({
           is_user_sign: true,
@@ -147,14 +142,12 @@ Page({
           type: 'selectMission'
         }
       }).then((resp) => {
-        console.log(resp, '获取所有mission');
         this.setData({
           haveGetRecord: true,
           missionRecord: resp.result.data
         });
         wx.hideLoading();
      }).catch((e) => {
-        console.log(e);
         this.setData({
           // showUploadTip: true
         });
@@ -170,7 +163,6 @@ Page({
           return item.mission_content === '每日签到'; 
         });
         
-        console.log(data, this.data.missionRecord)
         if(data){
           this.setData({
             signMissionData: data,
@@ -193,8 +185,6 @@ Page({
           }
         }
       }).then(resp => {
-        console.log('签到后更新积分成功')
-          console.log(resp, '签到状态');
         this.selectUserSignRecord();
       }).catch((e) => {
 
@@ -214,7 +204,6 @@ Page({
           }
         }
       }).then((resp) => {
-        console.log('完成任务')
         wx.cloud.callFunction({
           name: 'quickstartFunctions',
           config: {
@@ -227,7 +216,6 @@ Page({
             }
           }
         }).then(resp => {
-          console.log('更新任务完成')
           wx.showToast({
             title: '完成任务',
             icon: 'success',
@@ -256,12 +244,10 @@ Page({
           item = resp.result.data[i];
           res.push({date: item.sign_date})
         }
-        console.log(resp, res, '查出所有签到记录');
         let specialList = [];
         for(let i = 0; i < resp.result.data.length; i++){
           specialList.push({date: resp.result.data[i].sign_date, background: '#ffccff'})
         }
-        console.log(specialList, 'specialList')
         this.setData({
           signRecords: resp.result.data,
           selected: res,
@@ -276,14 +262,13 @@ Page({
      * 日历是否被打开
      */
     bindselect(e) {
-        console.log(e.detail.ischeck,'点击确定')
+        // console.log(e.detail.ischeck,'点击确定')
     },
     /**
     * 获取选择日期
     */
     bindgetdate(e) {
         let time = e.detail;
-        console.log(time,'点击确定111');
         // this.userSign({
         //   currentDate: (new Date()).getTime()
         // })
