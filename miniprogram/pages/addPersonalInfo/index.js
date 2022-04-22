@@ -44,13 +44,11 @@ Page({
       },
     // weui提交表单
       weSubmitForm() {
-          console.log(this.data, 'in submit')
         const {userName, telNumber, region, addrDetail} = this.data.form
         const validRegion = region.filter(v => v) // 提取有效值
         this.selectComponent('#form').validate((valid, errors) => {
           if (!valid) {
             const firstError = Object.keys(errors);
-            console.log(firstError, 'error',errors)
             if (firstError.length) {
               this.setData({
                 errorMsg: errors[firstError[0]].message

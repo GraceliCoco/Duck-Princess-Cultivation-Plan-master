@@ -9,7 +9,5 @@ const db = cloud.database();
 exports.main = async (event, context) => {
   // 返回数据库查询结果
   const data = event.data;
-  console.log('zhixing 1111111111')
-  console.log(event, 111111111111)
   return await db.collection('sign_record').get();
 };

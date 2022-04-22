@@ -56,7 +56,6 @@ Component({
         calShow: false,
         dateShow: true
       })
-      console.log(this.data, 'in ready')
     }
   },
   /**
@@ -151,7 +150,6 @@ Component({
     getWeek(dateData, isNeedChangeCurrent=false) {
       let selected = this.data.selected
       let a = new Date()
-      // console.log("im date ", a, typeof a === 'object')
       // 判断当前是 安卓还是ios ，传入不容的日期格式
       if (typeof dateData !== 'object') {
         dateData = dateData.replace(/-/g, "/")
@@ -162,7 +160,6 @@ Component({
       let date = _date.getDate();//日
       let day = _date.getDay();// 天
       let canlender = [];
-      // console.log(selected)
       let dates = {
         firstDay: new Date(year, month - 1, 1).getDay(),
         lastMonthDays: [],// 上个月末尾几天

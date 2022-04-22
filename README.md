@@ -32,6 +32,9 @@ CREATE TABLE IF NOT EXISTS mission (
     `mission_image` VARCHAR(100) COMMENT '任务图片',
     `mission_integral` NUMBER NOT NULL COMMENT '任务积分',
     `is_online` BOOLEAN NOT NULL COMMENT '是否展示',
+    `is_display` BOOLEAN NOT NULL COMMENT '是否展示',​
+    `is_finished` BOOLEAN NOT NULL COMMENT '是否已完成',​
+    `is_need_reset` BOOLEAN NOT NULL COMMENT '是否需要重启',​
 ) COMMENT='任务表';
 ```
 

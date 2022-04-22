@@ -27,15 +27,12 @@ Page({
 
   toAddMission(e) {
     this.data.operateType = e.currentTarget.dataset.type;
-    console.log(e, '2222222222222222', e.currentTarget.dataset.type, this.data)
     let missionData = this.editMissionModal(e);
     let data = {
       envId: this.data.envId,
       type: this.data.operateType,
       missionData: this.data.operateType === 'edit' ? missionData : {},
     };
-    console.log(data)
-    console.log(missionData, 'missionData')
     data = JSON.stringify(data);
     wx.navigateTo({
       url: `/pages/addMission/index?data=${data}`
@@ -56,7 +53,7 @@ Page({
         if (res.confirm) {
           deleteRewards(data)
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
         }
       }
     })
@@ -68,7 +65,6 @@ Page({
       return item._id === missionId; 
     })
     const updateRewards = this.updateRewards;
-    console.log(updateRewards, 'updateRewards');
     return data;
     // this.toAddMission(event);
   },
@@ -126,7 +122,6 @@ Page({
       });
       wx.hideLoading();
    }).catch((e) => {
-      console.log(e);
       this.setData({
         showUploadTip: true
       });

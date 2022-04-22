@@ -17,9 +17,7 @@ Page({
   },
 
   onLoad(options) {
-    console.log(options, 'options')
     options = JSON.parse(options.data);
-    console.log(options, 'in setData add Mission page')
     this.setData({
       envId: options.envId,
       type: options.type,
@@ -33,7 +31,6 @@ Page({
         reward_id: options.rewardData._id,
         haveGetImgSrc: options.rewardData.goods_image ? true : false,
       })
-      console.log(this.data.imgSrc, this.data, 'data123411111111111')
       wx.setNavigationBarTitle({
         title: '修改奖励'
       });
@@ -46,7 +43,6 @@ Page({
 
   formSubmit(e) {
     wx.showLoading()
-    console.log('form发生了submit事件，携带数据为：', e.detail.value, this.data)
     const data = e.detail.value;
     if (data.goods_content && data.goods_integral){
       wx.cloud.callFunction({
@@ -88,7 +84,6 @@ Page({
   },
 
   formReset(e) {
-    console.log('form发生了reset事件，携带数据为：', e.detail.value)
     this.setData({
       chosen: ''
     })
@@ -112,14 +107,12 @@ Page({
             env: this.data.envId
           }
         }).then(res => {
-          console.log('上传成功', res);
           this.setData({
             haveGetImgSrc: true,
             imgSrc: res.fileID
           });
           wx.hideLoading();
         }).catch((e) => {
-          console.log(e);
           wx.hideLoading();
         });
       },

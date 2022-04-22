@@ -35,7 +35,7 @@ Page({
         if (res.confirm) {
           completeMission(data)
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
         }
       }
     })
@@ -54,16 +54,14 @@ Page({
         if (res.confirm) {
           completeResetMission(data)
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
         }
       }
     })
   },
   completeResetMission(mission) {
     wx.showLoading();
-    console.log('form发生了reset事件，携带数据为：', mission);
     const data = mission;
-    console.log(data, 'data in resetMiSSION');
     wx.cloud.callFunction({
       name: 'quickstartFunctions',
       config: {
@@ -156,7 +154,6 @@ Page({
         type: 'selectMission'
       }
     }).then((resp) => {
-      console.log(resp, '获取积分')
       this.setData({
         haveGetRecord: true,
         record: resp.result.data.filter(item => item.is_display),
@@ -164,7 +161,6 @@ Page({
       });
       wx.hideLoading();
    }).catch((e) => {
-      console.log(e);
       this.setData({
         showUploadTip: true
       });

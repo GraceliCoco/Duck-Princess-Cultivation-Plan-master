@@ -50,7 +50,7 @@ Page({
       COMPLETE_MISSION: 'complete mission',
       EXCHANGE_REWARDS: 'exchange rewards'
     },
-    
+
     calendarShow: false,
     currentDate: util.getFormatDate(new Date()),
     specialDays: [['2021-05-02','周年纪念日'],['2022-04-20','我的生日'],['2022-05-05','宝贝生日']],
@@ -69,45 +69,37 @@ Page({
   onShow(){
     this.selectUser();
 
-    
+
     this.selectUserSignRecord();
-    console.log(util.getFormatDate(new Date()));
     this.isNeedAddSignMission();
   },
 
   async isNeedAddSignMission(){
-    console.log(this.haveGetRecord)
     if(!this.data.haveGetRecord) {
       // let record = await this.getMissionRecord();
       // let that = this;
       let promise = this.getMissionRecord();
       promise.then(e=>{
         // 查询出所有的mission记录
-        console.log(e, 'promise成功返回');
-        console.log(this.data.missionRecord, 'missionRecord')
-
         if(!this.data.missionRecord.length) {
           // 如果还没有记录，先创建一个sign的mission;
-          console.log(111111111)
           this.addSignMission();
         } else {
           // 有mission记录但是找不到sign记录的，也创建一个sign记录
           const data = this.data.missionRecord.find(item => {
-            return item.mission_content === '每日签到'; 
+            return item.mission_content === '每日签到';
           });
           if(!data){
-            console.log('Not found mission sign')
             this.addSignMission();
           }
         }
       },(error) => {
         console.log(error, '失败了')
       })
-      console.log(promise, 'record11111');
-      
+
     }
     // let res = await wx.cloud.database().collection('mission').get();
-    
+
   },
 
   addSignMission(){
@@ -140,7 +132,7 @@ Page({
         }
       }
     }).then(resp => {
-      console.log(resp,'新增签到任务');
+      // console.log(resp,'新增签到任务');
     })
   },
 
@@ -160,7 +152,6 @@ Page({
         }
       }).then((resp) => {
         success(resp);
-        console.log(resp, '获取所有mission');
         that.setData({
           haveGetRecord: true,
           missionRecord: resp.result.data
@@ -169,7 +160,6 @@ Page({
         return resp.result.data;
       }).catch((e) => {
         fail(e);
-        console.log(e);
         that.setData({
           // showUploadTip: true
         });
@@ -178,7 +168,7 @@ Page({
       });
     });
     return promise;
-    
+
   },
 
   onClickPowerInfo(e) {
@@ -201,7 +191,7 @@ Page({
         this.onChangeSelectedEnv(res.tapIndex);
       },
       fail (res) {
-        console.log(res.errMsg);
+        // console.log(res.errMsg);
       }
     });
   },
@@ -277,7 +267,6 @@ Page({
  },
 
  selectUserSignRecord(){
-   console.log('执行selectUserSignRecord')
     wx.cloud.callFunction({
       name: 'quickstartFunctions',
       config: {
@@ -290,7 +279,6 @@ Page({
         }
       }
     }).then((resp) => {
-      console.log(resp, '查完状态', util.getFormatDate(new Date()))
       this.setData({
         is_user_sign: resp.result.data[0].is_sign,
       })
@@ -311,7 +299,6 @@ Page({
       }
     }
   }).then((resp) => {
-    console.log(resp, '签到状态')
     this.setData({
       is_user_sign: true,
     });
@@ -342,10 +329,7 @@ Page({
           return false
         })
         const currentDate = new Date().getDate();
-        console.log('lastMissionDate', lastMissionDate)
-        console.log('currentDate', currentDate)
         if (lastMissionDate !== currentDate){
-          console.log('resetMission')
           wx.cloud.callFunction({
             name: 'quickstartFunctions',
             config: {
@@ -358,18 +342,16 @@ Page({
 
           })
         }
-        
+
     }).catch((e) => {
     });
   },
   showCanlendar(e){
-    console.log(e, 'click the btn')
     this.setData({
       calendarShow: true
     });
     let component = this.selectComponent("#calendar");
     component.showCalendar();
-    console.log(this.data.calendarShow)
   },
   // 日历被选中
   onSelectDate(e){
@@ -386,7 +368,7 @@ Page({
           title: '您今日已签到',
         })
       }
-      
+
     }
   }
 });

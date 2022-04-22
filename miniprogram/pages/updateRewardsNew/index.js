@@ -27,15 +27,12 @@ Page({
 
   toAddRewards(e) {
     this.data.operateType = e.currentTarget.dataset.type;
-    console.log(e, '2222222222222222', e.currentTarget.dataset.type, this.data)
     let rewardData = this.editRewardModal(e);
     let data = {
       envId: this.data.envId,
       type: this.data.operateType,
       rewardData: this.data.operateType === 'edit' ? rewardData : {},
     };
-    console.log(data)
-    console.log(rewardData, 'rewardData')
     data = JSON.stringify(data);
     wx.navigateTo({
       url: `/pages/addRewards/index?data=${data}`,
@@ -55,7 +52,7 @@ Page({
         if (res.confirm) {
           deleteRewards(data)
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
         }
       }
     })
@@ -67,7 +64,6 @@ Page({
       return item._id === rewardId; 
     })
     const updateRewards = this.updateRewards;
-    console.log(updateRewards, 'updateRewards');
     return data;
   },
 
@@ -124,7 +120,6 @@ Page({
       });
       wx.hideLoading();
    }).catch((e) => {
-      console.log(e);
       this.setData({
         showUploadTip: true
       });

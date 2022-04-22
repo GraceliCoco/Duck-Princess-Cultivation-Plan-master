@@ -22,8 +22,6 @@ Page({
   },
 
   formatDateTime(date) {
-    console.log('date', date)
-    console.log('date', new Date())
     var m = date.getMonth() + 1;
     m = m < 10 ? ('0' + m) : m;
     var d = date.getDate();
@@ -49,8 +47,6 @@ Page({
       }
     }).then((resp) => {
       const operatorData = resp.result.data.reverse();
-      console.log('resp', resp)
-      console.log('operatorData', operatorData)
       if(!operatorData.length){
         this.setData({
           haveGetRecord: true,
@@ -116,7 +112,6 @@ Page({
         }
       })
    }).catch((e) => {
-      console.log(e);
       this.setData({
         showUploadTip: true
       });
