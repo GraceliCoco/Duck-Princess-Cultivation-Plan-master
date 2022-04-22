@@ -1,0 +1,58 @@
+/* components/new-radio-group/index.wxss */.fabu_leixing_cont {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.attr_value {
+  float: left;
+  width: 20%;
+  height: 50rpx;
+  margin:20rpx 15rpx;
+  position: relative;
+}
+ 
+.radio_label {
+  display: block;
+  text-align: center;
+  line-height: 50rpx;
+}
+radio {
+  box-sizing: border-box;
+  background: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* radio未选中时样式 */
+ 
+radio .wx-radio-input {
+  margin-right: 15rpx;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: none;
+  border-radius: 6rpx;
+  box-sizing: border-box;
+}
+ 
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+ 
+radio .wx-radio-input.wx-radio-input-checked {
+  background-color: transparent;
+  border-color: #f8bf21;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+ 
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+ 
+radio .wx-radio-input.wx-radio-input-checked::before {
+  font-size: 0rpx; /* 对勾大小 去掉 */
+}

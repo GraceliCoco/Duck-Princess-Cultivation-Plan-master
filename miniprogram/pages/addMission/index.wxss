@@ -72,6 +72,8 @@ page{
   background-color: white;
   margin-top: 30rpx;
   padding: 50rpx 0 17px 0;
+  height: auto !important;
+  width: auto !important;
 }
 
 .button {
@@ -90,10 +92,10 @@ page{
   text-align: center;
   margin: 20px auto 0 auto;
   height: 80rpx;
-  color: #07c160;
-  border-radius: 30rpx;
+  color: #fff !important;
+  border-radius: 40rpx;
   line-height: 80rpx;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: #409eff !important;
   margin: 0 20rpx;
 }
 
@@ -147,3 +149,21 @@ page{
   width: 500rpx;
 }
 
+.radio-wrap{
+  height: 80rpx;
+}
+.radio-group-wrap{
+  display: flex;
+}
+
+.radio-list-item{
+  display: inline-block !important;
+  position: inherit !important;
+  margin-left: 10rpx;
+}
+
+.radio-item{
+  display: block;
+  text-align: center;
+  line-height: 50rpx;
+}

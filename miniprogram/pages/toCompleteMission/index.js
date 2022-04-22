@@ -11,7 +11,8 @@ Page({
     operatorType: {
       COMPLETE_MISSION: 'complete mission',
       EXCHANGE_REWARDS: 'exchange rewards'
-    }
+    }, 
+    originRecord: []
   },
 
   onLoad(options) {
@@ -76,6 +77,8 @@ Page({
           mission_integral: mission.mission_integral,
           mission_image: mission.mission_image,
           is_finished: false,
+          is_need_reset: mission.is_need_reset,
+          is_display: mission.is_display,
         }
       }
     }).then(resp => {
@@ -128,7 +131,7 @@ Page({
             }
           }
         }).then(resp => {
-          this.getRecord()
+          this.getRecord();
           wx.showToast({
             title: '完成任务',
             icon: 'success',
@@ -156,7 +159,8 @@ Page({
       console.log(resp, '获取积分')
       this.setData({
         haveGetRecord: true,
-        record: resp.result.data
+        record: resp.result.data.filter(item => item.is_display),
+        originRecord: resp.result.data,
       });
       wx.hideLoading();
    }).catch((e) => {

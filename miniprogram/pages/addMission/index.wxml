@@ -12,17 +12,32 @@
       <view class="page-section">
         <view class="weui-cells__title page-title">任务图片</view>
         <view class="box_text" wx:if="{{!imgSrc}}">上传的图片将展示在这里</view>
-      <view  wx:if="{{imgSrc}}" class="code_box">
-        <image class="code_img" src="{{imgSrc}}"></image>
-      </view>
-      <view class="button upload-btn" bindtap="uploadImg" wx:if="{{!haveGetImgSrc}}">上传图片</view>
-      <view class="button_clear upload-btn" bindtap="clearImgSrc" wx:if="{{haveGetImgSrc}}">清空</view>
+        <view  wx:if="{{imgSrc}}" class="code_box">
+          <image class="code_img" src="{{imgSrc}}"></image>
+        </view>
+        <view class="button upload-btn" bindtap="uploadImg" wx:if="{{!haveGetImgSrc}}">上传图片</view>
+        <view class="button_clear upload-btn" bindtap="clearImgSrc" wx:if="{{haveGetImgSrc}}">清空</view>
       </view>
       <view class="page-section">
         <view class="weui-cells__title">价值鸡分</view>
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
             <input name="mission_integral" class="weui-input" type="number" placeholder="请输入" value="{{mission_integral}}"/>
+          </view>
+        </view>
+      </view>
+      <view class="page-section">
+        <view class="weui-cells__title">是否每日重启</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input radio-wrap">
+            <!-- <input name="mission_integral" class="weui-input" type="number" placeholder="请输入" value="{{mission_integral}}"/> -->
+            <radio-group class="radio-group-wrap" bindchange="radioChange">
+              <label class="radio-item" wx:for="{{radioItems}}" data-code="{{item.value}}" wx:key="id" >
+                <radio class="radio-list-item" value="{{item.value}}" checked="{{item.checked}}">{{item.name}}</radio>
+              </label>
+            </radio-group>
+
+            <!-- <new-radio-group items="{{radioItems}}" bindradioChange="radioChange"></new-radio-group> -->
           </view>
         </view>
       </view>

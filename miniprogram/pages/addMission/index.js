@@ -14,6 +14,11 @@ Page({
     type: '',
     missionData: {},
     mission_id: '',
+    radioItems: [
+      {id: 0, name: '是', value: 'true', checked: 'true'},
+      {id: 1, name: '否', value: 'false', }
+    ],
+    is_need_reset: true,
   },
 
   onLoad(options) {
@@ -22,7 +27,8 @@ Page({
     this.setData({
       envId: options.envId,
       type: options.type,
-      missionData: options?.missionData || {}
+      missionData: options?.missionData || {},
+      is_need_reset: options?.is_need_reset || true,
     });
     if(options.type === 'edit') {
       this.setData({
@@ -30,7 +36,8 @@ Page({
         mission_content: options.missionData.mission_content,
         mission_integral: options.missionData.mission_integral,
         mission_id: options.missionData._id,
-        haveGetImgSrc: options.missionData.mission_image === '' ? true : false,
+        is_need_reset: options?.is_need_reset || true,
+        haveGetImgSrc: options.missionData.mission_image === '' ? false : true,
       })
       console.log(this.data.imgSrc, this.data, 'data1234')
       wx.setNavigationBarTitle({
@@ -42,11 +49,28 @@ Page({
       })
     }
   },
+  radioChange: function(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    this.setData({
+      is_need_reset: e.detail.value
+    })
+  },
 
   formSubmit(e) {
     wx.showLoading();
-    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    console.log('form发生了submit事件，携带数据为：', e.detail.value, this.data);
     const data = e.detail.value;
+    let aaa =  {
+      mission_content: data.mission_content,
+      mission_integral: data.mission_integral,
+      mission_image: this.data.imgSrc,
+      mission_id: this.data.type ==='add' ? '' : this.data.mission_id,
+      is_finished: false,
+      is_online: true,
+      is_need_reset: this.data.is_need_reset,
+      is_display: true,
+    };
+    console.log(aaa, 'aaaaa')
     if (data.mission_content && data.mission_integral){
       wx.cloud.callFunction({
         name: 'quickstartFunctions',
@@ -61,9 +85,13 @@ Page({
             mission_image: this.data.imgSrc,
             mission_id: this.data.type ==='add' ? '' : this.data.mission_id,
             is_finished: false,
+            is_online: true,
+            is_need_reset: this.data.is_need_reset,
+            is_display: true,
           }
         }
       }).then(resp => {
+        console.log(resp, 'resp')
         wx.hideLoading()
         wx.showToast({
           title: this.data.type === 'add' ? '新增成功' : '修改成功',

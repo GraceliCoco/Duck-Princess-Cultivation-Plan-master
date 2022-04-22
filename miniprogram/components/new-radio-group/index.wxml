@@ -1,0 +1,13 @@
+<!--components/new-radio-group/index.wxml-->
+<view class='fabu_leixing_cont'>
+<!-- <view> -->
+    <radio-group class="group" bindchange="comment" name="comment">
+      <view class="picker_comment">
+        <view class="attr_value" wx:for="{{items}}" wx:key="id">
+          <radio color='' value='{{item.value}}'  checked="{{item.checked}}"/>
+          <label class='radio_label'>{{item.name}}</label>
+        </view>
+      </view>
+    </radio-group>
+<!-- </view> -->
+</view>

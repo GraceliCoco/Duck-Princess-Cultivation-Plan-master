@@ -20,6 +20,8 @@ exports.main = async (event, context) => {
         mission_image: data.mission_image,
         is_online: true,
         is_finished: data.is_finished,
+        is_need_reset: data.is_need_reset,
+        is_display: data.is_display,
       }
   });
 };
