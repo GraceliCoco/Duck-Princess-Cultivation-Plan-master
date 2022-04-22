@@ -15,7 +15,8 @@ const editReward = require('./editReward/index');
 const deleteMission = require('./deleteMission/index');
 const selectUserSignRecord = require('./selectUserSignRecord/index');
 const addSignRecord = require('./addSignRecord/index');
-const selectSignedRecord = require('./selectSignedRecord/index')
+const selectSignedRecord = require('./selectSignedRecord/index');
+const getOpenid = require('./getOpenid/index');
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -56,5 +57,7 @@ exports.main = async (event, context) => {
       return await addSignRecord.main(event, context);
     case 'selectSignedRecord':
       return await selectSignedRecord.main(event, context);
+    case 'getOpenid': 
+      return await getOpenid.main(event, context);
   }
 };

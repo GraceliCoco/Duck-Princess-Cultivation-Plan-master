@@ -5,7 +5,7 @@
         <view class="weui-cells__title">任务内容</view>
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
-            <input name="mission_content" class="weui-input" placeholder="请输入" value="{{mission_content}}" />
+            <input name="mission_content" class="weui-input {{is_display ? '' : 'input-disabled'}}" disabled="{{is_display ? false : true}}" placeholder="请输入" value="{{mission_content}}" />
           </view>
         </view>
       </view>

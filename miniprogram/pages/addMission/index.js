@@ -19,6 +19,7 @@ Page({
       {id: 1, name: '否', value: 'false', }
     ],
     is_need_reset: true,
+    is_display: '',
   },
 
   onLoad(options) {
@@ -37,6 +38,7 @@ Page({
         mission_integral: options.missionData.mission_integral,
         mission_id: options.missionData._id,
         is_need_reset: options?.is_need_reset || true,
+        is_display: options.missionData.is_display,
         haveGetImgSrc: options.missionData.mission_image === '' ? false : true,
       })
       console.log(this.data.imgSrc, this.data, 'data1234')
@@ -44,6 +46,9 @@ Page({
         title: '修改任务'
       });
     }else{
+      this.setData({
+        is_display: true,
+      })
       wx.setNavigationBarTitle({
         title: '新增任务',
       })

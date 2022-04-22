@@ -167,3 +167,8 @@ page{
   text-align: center;
   line-height: 50rpx;
 }
+
+.input-disabled{
+  cursor: no-drop;
+  color: grey;
+}
